@@ -1,0 +1,3 @@
+rootProject.name = 'KotlinArsenal'
+
+include 'backend', 'app'
