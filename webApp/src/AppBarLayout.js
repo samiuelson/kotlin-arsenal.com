@@ -27,8 +27,8 @@ const useStyles = makeStyles({
               <Typography variant="h5"color="inherit" gutterBottom>
                 <code>Kotlin-Arsenal</code>
               </Typography>
-              <Typography variant="overline"  color="inherit" gutterBottom>
-                A curated list of Kotlin libraries and resources
+              <Typography variant="overline"  color="inherit" gutterBottom noWrap>
+                A curated list of Kotlin libraries
               </Typography>
             </div>
           </Toolbar>

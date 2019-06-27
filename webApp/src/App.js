@@ -36,12 +36,14 @@ class App extends Component {
       <main>
       <AppBarLayout/>
       <CategorySelect/>
-      <Grid container spacing={10}>
-        {this.state.libraries.map((library) => (
-          <Grid item xs key={library.githubUrl}>
-            <SimpleCard value={library} /> 
-          </Grid>
-        ))}
+      <Grid containter >
+        <Grid container wrap="nowrap" spacing={2} direction="column" justify="center">
+          {this.state.libraries.map((library) => (
+            <Grid item key={library.githubUrl}>
+              <SimpleCard value={library} /> 
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
       </main>
       </div>

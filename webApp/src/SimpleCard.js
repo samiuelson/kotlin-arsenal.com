@@ -8,10 +8,16 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275,
-    margin: 22,
+    maxWidth: 800,
+    margin: 'auto',
+    padding: 12,
+    textAlign: 'left',
   },
 });
+
+function getLibraryTitle(library) {
+  return library.githubUrl.replace('https://github.com/', '');
+}
 
 export default function SimpleCard(library) {
   const classes = useStyles();
@@ -19,7 +25,10 @@ export default function SimpleCard(library) {
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography variant="h5" >
+        <Typography variant="h5" gutterBottom noWrap>
+          {getLibraryTitle(library.value)}
+        </Typography>
+        <Typography variant="subtitle2" gutterBottom noWrap>
           {library.value.githubUrl}
         </Typography> 
         <Typography className={classes.title} color="textSecondary" gutterBottom>
@@ -27,7 +36,7 @@ export default function SimpleCard(library) {
         </Typography>
       </CardContent>
       <CardActions>
-         <Button size="small" href={library.value.githubUrl} target="_blank" >See on GitHub</Button>
+         <Button size="small" variant="contained" color="primary" href={library.value.githubUrl} target="_blank" >Open on GitHub</Button>
       </CardActions>
     </Card>
   );
