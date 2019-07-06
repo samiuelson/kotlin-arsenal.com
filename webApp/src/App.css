@@ -4,6 +4,10 @@
   overflow: hidden;
 }
 
+.progress-bar {
+  padding: 8vh;
+}
+
 body {
   background-color: rgb(241, 241, 241);
 }
