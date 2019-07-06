@@ -3,6 +3,8 @@ import AppBarLayout from './AppBarLayout';
 import SimpleCard from './SimpleCard';
 import CategorySelect from './CategorySelect';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import './App.css';
 
 class App extends Component {
@@ -41,13 +43,21 @@ class App extends Component {
         <main>
           <AppBarLayout/>
           <CategorySelect categoryCallback={category => this.setCategory(category)}/>
-            <Grid container wrap="nowrap" spacing={2} direction="column" justify="center">
-              {libraries.map((library) => (
-                <Grid item key={library.githubUrl}>
-                  <SimpleCard value={library} /> 
-                </Grid>
-              ))}
-            </Grid>
+
+          <div className="progress-bar" hidden={this.state.libraries.length > 0}>
+            <CircularProgress color="secondary" />
+            <Typography variant="h6" display="block" gutterBottom>
+              <code>knock-knock... waking up this lazy server <span role="img" aria-label="sleepy face">😴</span></code>
+            </Typography>
+          </div>
+
+          <Grid container wrap="nowrap" spacing={2} direction="column" justify="center">
+            {libraries.map((library) => (
+              <Grid item key={library.githubUrl}>
+                <SimpleCard value={library} /> 
+              </Grid>
+            ))}
+          </Grid>
         </main>
       </div>
     );
