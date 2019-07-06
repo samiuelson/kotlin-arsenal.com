@@ -41,7 +41,6 @@ class App extends Component {
         <main>
           <AppBarLayout/>
           <CategorySelect categoryCallback={category => this.setCategory(category)}/>
-          <Grid containter >
             <Grid container wrap="nowrap" spacing={2} direction="column" justify="center">
               {libraries.map((library) => (
                 <Grid item key={library.githubUrl}>
@@ -49,7 +48,6 @@ class App extends Component {
                 </Grid>
               ))}
             </Grid>
-          </Grid>
         </main>
       </div>
     );

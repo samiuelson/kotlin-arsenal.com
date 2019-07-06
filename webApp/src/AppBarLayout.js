@@ -8,12 +8,13 @@ import logo from './logo.png';
 const useStyles = makeStyles({
     root: {
       width: '100%',
-      maxWidth: 500,
       textAlign: "left",
     },
     appLogo: {
       height: '10vmin',
-      margin: '4vh',
+      marginTop: '2vh',
+      marginBottom: '2vh',
+      marginRight: '2vh',
     },
   });
   
