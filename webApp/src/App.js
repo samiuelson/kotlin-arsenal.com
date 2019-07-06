@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBarLayout from './AppBarLayout';
 import SimpleCard from './SimpleCard';
 import CategorySelect from './CategorySelect';
@@ -8,7 +7,8 @@ import './App.css';
 
 class App extends Component {
   state = {
-    libraries: []
+    libraries: [], 
+    category: "Everything"
   }
 
   componentDidMount() {
@@ -21,31 +21,36 @@ class App extends Component {
       .then(res => res.json())
       .then((data) => { 
         console.log(data)
-        this.setState( { libraries: data} ) 
+        this.setState({libraries: data}) 
         console.log(this.state.libraries)
       })
       .catch(console.log)
   }
 
+  setCategory(selectedCategory) {
+    console.log("Received category:" + selectedCategory)
+    this.setState({category: selectedCategory})
+  }
+
   render() {
+    const libraries = this.state.libraries.filter(library => 
+      library.category.name === this.state.category || "Everything" === this.state.category);
+    console.log("Libraries filtered by category:" + libraries);
     return (
       <div className="App">
-        <React.Fragment>
-      <CssBaseline />
-      </React.Fragment>
-      <main>
-      <AppBarLayout/>
-      <CategorySelect/>
-      <Grid containter >
-        <Grid container wrap="nowrap" spacing={2} direction="column" justify="center">
-          {this.state.libraries.map((library) => (
-            <Grid item key={library.githubUrl}>
-              <SimpleCard value={library} /> 
+        <main>
+          <AppBarLayout/>
+          <CategorySelect categoryCallback={category => this.setCategory(category)}/>
+          <Grid containter >
+            <Grid container wrap="nowrap" spacing={2} direction="column" justify="center">
+              {libraries.map((library) => (
+                <Grid item key={library.githubUrl}>
+                  <SimpleCard value={library} /> 
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
-      </Grid>
-      </main>
+          </Grid>
+        </main>
       </div>
     );
   }
