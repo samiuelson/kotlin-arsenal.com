@@ -47,7 +47,7 @@ class App extends Component {
           <div className="progress-bar" hidden={this.state.libraries.length > 0}>
             <CircularProgress color="secondary" />
             <Typography variant="h6" display="block" gutterBottom>
-              <code>knock-knock... waking up this lazy server <span role="img" aria-label="sleepy face">😴</span></code>
+              <code>knock-knock... waiting for this lazy server to wake up <span role="img" aria-label="sleepy face emoji">😴</span></code>
             </Typography>
           </div>
 
