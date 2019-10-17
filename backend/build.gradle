@@ -2,20 +2,23 @@ group 'com.kotlin-arsenal'
 version '1.0'
 
 buildscript {
-    ext.kotlin_version = '1.3.31'
+    ext.kotlin_version = '1.3.41'
     ext.ktor_version = '1.2.1'
 
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.novoda:gradle-build-properties-plugin:0.4.1'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'application'
+apply plugin: 'com.novoda.build-properties'
 
 mainClassName = 'io.ktor.server.netty.EngineMain'
 
@@ -25,11 +28,32 @@ compileTestKotlin { kotlinOptions.jvmTarget = "1.8" }
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    compile "io.ktor:ktor-server-netty:$ktor_version"
-    compile "ch.qos.logback:logback-classic:1.2.3"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "io.ktor:ktor-server-netty:$ktor_version"
+    implementation "ch.qos.logback:logback-classic:1.2.3"
+    implementation 'org.jetbrains.exposed:exposed:0.16.1'
+    implementation "org.postgresql:postgresql:42.2.2"
+    implementation "io.ktor:ktor-jackson:$ktor_version"
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
 }
+
+buildProperties {
+    secrets {
+        using file('secret.properties')
+    }
+}
+//run.doFirst { environment 'DATABASE_URL', buildProperties.secrets['DATABASE_URL'].string }
+//task env(type: Exec) {
+//    if (buildProperties.secrets['DATABASE_URL'].string != null) {
+//        println("setting env variables")
+//        environment 'DATABASE_URL', buildProperties.secrets['DATABASE_URL'].string
+////        commandLine "export", "DATABASE_URL=${buildProperties.secrets['DATABASE_URL'].string}"
+//    }
+//}
+//
+//run.dependsOn env

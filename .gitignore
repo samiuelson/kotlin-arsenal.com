@@ -81,3 +81,7 @@ fabric.properties
 .idea/
 backend.iml
 backend/.DS_Store
+
+# Env vars
+backend/set_env_vars.sh
+backend/secret.properties
