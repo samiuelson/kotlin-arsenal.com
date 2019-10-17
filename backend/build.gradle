@@ -47,13 +47,14 @@ buildProperties {
         using file('secret.properties')
     }
 }
-//run.doFirst { environment 'DATABASE_URL', buildProperties.secrets['DATABASE_URL'].string }
-//task env(type: Exec) {
-//    if (buildProperties.secrets['DATABASE_URL'].string != null) {
-//        println("setting env variables")
-//        environment 'DATABASE_URL', buildProperties.secrets['DATABASE_URL'].string
-////        commandLine "export", "DATABASE_URL=${buildProperties.secrets['DATABASE_URL'].string}"
-//    }
-//}
-//
-//run.dependsOn env
+
+task env {
+    if (buildProperties.secrets['DATABASE_URL'].string != null) {
+        exec {
+            workingDir "./"
+            commandLine "./set_env_vars.sh"
+        }
+    }
+}
+
+run.dependsOn env

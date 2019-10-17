@@ -21,8 +21,7 @@ import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Application.main() {
-
-    Db.init()
+    Db.init(dbUrl)
 
     transaction {
         addLogger(StdOutSqlLogger)
@@ -39,7 +38,7 @@ fun Application.main() {
             call.respondText("Bonjour! Ca va?", ContentType.Text.Html)
         }
         get("/libraries") {
-            val results = connectAndExecute {
+            val results = connectAndExecute(dbUrl) {
                 Library.all().copy().toList().map { lib ->
                     val category = LibraryCategory.all().first { it.id == lib.category }
                     val platforms = lib.compatiblePlatforms.copy().map { Platform(it.name) }.toList()
@@ -54,3 +53,5 @@ fun Application.main() {
 val Application.envKind get() = environment.config.property("ktor.environment").getString()
 val Application.isDev get() = envKind == "dev"
 val Application.isProd get() = envKind != "dev"
+
+val Application.dbUrl get() = environment.config.property("ktor.databaseUrl").getString()
