@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://cors-anywhere.herokuapp.com/http://kotlin-arsenal.herokuapp.com/libraries', {
+    fetch('http://0.0.0.0:8080/libraries', {
       method: 'get',
       headers: {
         "origin": "kotlin-arsenal.com",

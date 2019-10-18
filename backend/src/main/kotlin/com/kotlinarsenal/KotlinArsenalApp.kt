@@ -6,10 +6,13 @@ import com.kotlinarsenal.data.db.*
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
+import io.ktor.features.CORS
 import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
 import io.ktor.features.DefaultHeaders
 import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
+import io.ktor.http.HttpMethod
 import io.ktor.jackson.jackson
 import io.ktor.response.respond
 import io.ktor.response.respondText
@@ -27,7 +30,11 @@ fun Application.main() {
         addLogger(StdOutSqlLogger)
         SchemaUtils.create(Libraries, LibraryCategoryLookup, LibraryCompatiblePlatformLookup, LibrariesWithCompatiblePlatforms)
     }
-
+    install(CORS) {
+        method(HttpMethod.Get)
+        header(HttpHeaders.AccessControlAllowOrigin)
+        anyHost()
+    }
     install(DefaultHeaders)
     install(CallLogging)
     install(ContentNegotiation) {
