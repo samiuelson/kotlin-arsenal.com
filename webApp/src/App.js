@@ -16,9 +16,6 @@ class App extends Component {
   componentDidMount() {
     fetch('http://0.0.0.0:8080/libraries', {
       method: 'get',
-      headers: {
-        "origin": "kotlin-arsenal.com",
-      }
     })
       .then(res => res.json())
       .then((data) => { 
