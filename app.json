@@ -1,0 +1,6 @@
+{
+  "name": "KotlinArsenal",
+  "description": "A curated list of Kotlin libraries and resources",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}
