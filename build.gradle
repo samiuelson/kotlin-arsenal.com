@@ -1,4 +1,5 @@
-allprojects {
-    buildscript {
-    }
+plugins {
+    id 'org.jetbrains.kotlin.nodejs' version '1.3.40'
+    id 'org.jetbrains.kotlin.multiplatform' version '1.3.40' apply false
+    id 'kotlinx-serialization' version '1.3.21' apply false
 }
