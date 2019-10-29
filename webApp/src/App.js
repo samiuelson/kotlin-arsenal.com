@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://0.0.0.0:8080/libraries', {
+    fetch('https://kotlin-arsenal.herokuapp.com/libraries', {
       method: 'get',
     })
       .then(res => res.json())
@@ -44,7 +44,7 @@ class App extends Component {
           <div className="progress-bar" hidden={this.state.libraries.length > 0}>
             <CircularProgress color="secondary" />
             <Typography variant="h6" display="block" gutterBottom>
-              <code>knock-knock... waiting for this lazy server to wake up <span role="img" aria-label="sleepy face emoji">😴</span></code>
+              <code>knock-knock... <span role="img" aria-label="sleepy face emoji">😴</span></code>
             </Typography>
           </div>
 

@@ -36,7 +36,6 @@ const BootstrapInput = withStyles(theme => ({
     fontSize: 16,
     padding: "10px 26px 10px 12px",
     transition: theme.transitions.create(["border-color", "box-shadow"]),
-    // Use the system font instead of the default Roboto font.
     fontFamily: [
       "-apple-system",
       "BlinkMacSystemFont",
@@ -76,10 +75,21 @@ export default function CategorySelect(props) {
               input={<BootstrapInput name="category"/>}
               name="Category" >
               <MenuItem value="Everything">Everything</MenuItem>
-              <MenuItem value="Logs">Logs</MenuItem>
+              <MenuItem value="Backend">Backend</MenuItem>
+              <MenuItem value="Coroutines">Coroutines</MenuItem>
               <MenuItem value="Database">Databases</MenuItem>
+              <MenuItem value="Dependency Injection">Dependency Injection</MenuItem>
+              <MenuItem value="Desktop">Desktop</MenuItem>
+              <MenuItem value="Frontend">Frontend</MenuItem>
+              <MenuItem value="Functional programming">Functional programming</MenuItem>
+              <MenuItem value="Game development">Game development</MenuItem>
+              <MenuItem value="Gradle plugins">Gradle plugins</MenuItem>
+              <MenuItem value="HTML">HTML</MenuItem>
+              <MenuItem value="IDE plugins">IDE plugins</MenuItem>
+              <MenuItem value="JSON">JSON</MenuItem>
               <MenuItem value="Reactive">Reactive</MenuItem>
-              <MenuItem value="Networking">Networking</MenuItem>
+              <MenuItem value="Tools">Tools</MenuItem>
+              <MenuItem value="UI">UI</MenuItem>
           </Select>
       </FormControl>
   );
