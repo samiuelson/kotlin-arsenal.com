@@ -47,7 +47,6 @@ dependencies {
     implementation 'org.jetbrains.exposed:exposed:0.16.1'
     implementation "org.postgresql:postgresql:42.2.2"
     implementation "io.ktor:ktor-jackson:$ktor_version"
-    implementation(project(':shared'))
 
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 }

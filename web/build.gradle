@@ -1,16 +1,17 @@
 plugins {
     id 'org.jetbrains.kotlin.js'
+    id 'kotlinx-serialization'
 }
 
-version '0.0.1'
-
 repositories {
-    mavenCentral()
     mavenLocal()
     jcenter()
     maven { url "https://dl.bintray.com/kotlin/kotlin-js-wrappers" }
     maven { url "https://dl.bintray.com/kotlin/kotlinx" }
+    mavenCentral()
 }
+
+ext.kotlin_version = '1.3.50'
 
 kotlin {
     target {
@@ -21,18 +22,9 @@ kotlin {
     sourceSets {
         main {
             dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
+                implementation kotlin('stdlib-js')
                 implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-js:0.10.0"
                 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.2.0"
-                implementation(npm("react", "16.8.3"))
-                implementation(npm("react-dom", "16.8.3"))
-                implementation(project(':shared'))
-            }
-        }
-
-        test {
-            dependencies {
-                implementation "org.jetbrains.kotlin:kotlin-test-js"
             }
         }
     }

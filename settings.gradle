@@ -12,17 +12,12 @@ pluginManagement {
             }
         }
     }
-
     repositories {
         mavenLocal()
         mavenCentral()
         maven { url 'https://plugins.gradle.org/m2/' }
     }
 }
-rootProject.name = 'kotlin-full-stack-application-demo'
-
-rootProject.name = 'kotlin-arsenal.com'
-
+rootProject.name = 'KotlinArsenal'
 include 'backend'
 include 'web'
-include 'shared'
