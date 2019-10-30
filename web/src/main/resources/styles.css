@@ -1,5 +1,5 @@
 body {
-    background: #353c43;
+    background: rgb(241, 241, 241);
     font-family: Roboto, sans-serif;
     text-align: center;
 }
@@ -43,8 +43,8 @@ body {
     background: #2196F3;
     border-radius: 2px;
     display: inline-block;
-    height: 390;
-    width: 262px;
+    height: 10em;
+    width: 50%;
     margin: 1rem;
     position: relative;
     padding: 10px;
@@ -87,7 +87,7 @@ body {
 }
 
 .float-left {
-	float: left;
+    float: left;
 }
 
 .view-details {
@@ -121,46 +121,47 @@ body {
 }
 
 .loader {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-content: center;
-  align-self: center;
-  justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+    color: #353c43;
 }
 
 .spinner {
-  display: flex;
-  align-content: center;
-  align-self: center;
-  justify-content: center;
-  animation: rotate 2s linear infinite;
+    display: flex;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+    animation: rotate 2s linear infinite;
 }
 
 .spinner circle {
-  fill: none;
-  stroke: #fff;
-  animation: dash 1.4s cubic-bezier(0.4,0,0.2,1) infinite;
+    fill: none;
+    stroke: deeppink;
+    animation: dash 1.4s cubic-bezier(0.4,0,0.2,1) infinite;
 }
 
 @keyframes dash {
-  0% {
-    stroke-dasharray: 2, 155;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 128, 24;
-    stroke-dashoffset: -20;
-  }
-  100% {
-    stroke-dasharray: 2, 155;
-    stroke-dashoffset: -155;
-  }
+    0% {
+        stroke-dasharray: 2, 155;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 128, 24;
+        stroke-dashoffset: -20;
+    }
+    100% {
+        stroke-dasharray: 2, 155;
+        stroke-dashoffset: -155;
+    }
 }
 
 @keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }

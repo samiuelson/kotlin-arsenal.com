@@ -12,7 +12,7 @@ class LibrariesViewModel(
     private val repo: LibrariesRepository = LibrariesRepository(app)
 ) {
     fun onCategorySelected(category: Category) {
-        console.log("onCategorySelected() ${category}")
+        console.log("onCategorySelected() $category")
         app.launch {
             repo.getLibraries().apply {
                 console.log("${this.count()} libraries found")
